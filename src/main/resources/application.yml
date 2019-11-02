@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: mutantDetection
+  datasource:
+        url: jdbc:mysql://localhost:3306/mutant
+        username: root
+        password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        
+server:
+  port: 8085
