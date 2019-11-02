@@ -40,8 +40,7 @@ public class DnaRepositoryImpl implements DnaRepository {
 		if(response.get(0) != null) {
 			dnaStats.setTotalHumans(((BigInteger)response.get(0)[0]).intValue());
 			dnaStats.setTotalMutants(((BigInteger)response.get(0)[1]).intValue());
-			Float ratio = Float.parseFloat(new DecimalFormat("##.##").format(((BigInteger)response.get(0)[1]).floatValue()/((BigInteger)response.get(0)[0]).floatValue()));
-			dnaStats.setRatio(dnaStats.getTotalMutants() >0 ? ratio : 0f);
+			dnaStats.setRatio(dnaStats.getTotalMutants() == 0 ? 0f : Float.parseFloat(new DecimalFormat("##.##").format(((BigInteger)response.get(0)[1]).floatValue()/((BigInteger)response.get(0)[0]).floatValue())));
 		}
 	     return dnaStats;
 	}

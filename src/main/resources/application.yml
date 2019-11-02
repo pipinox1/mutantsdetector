@@ -2,7 +2,7 @@ spring:
   application:
     name: mutantDetection
   datasource:
-        url: jdbc:mysql://localhost:3306/mutant
+        url: jdbc:mysql://localhost:3306/mutant?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
         username: root
         password: root
   jpa:

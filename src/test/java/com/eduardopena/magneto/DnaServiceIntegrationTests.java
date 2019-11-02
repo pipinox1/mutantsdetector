@@ -11,14 +11,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.eduardopena.magneto.configuration.BadRequestException;
 import com.eduardopena.magneto.dto.DnaDTO;
+import com.eduardopena.magneto.dto.DnaStatsDTO;
 import com.eduardopena.magneto.service.DnaService;
 
 @SpringBootTest
-class DnaServiceTests {
+class DnaServiceIntegrationTests {
 	
 	@Autowired
 	private DnaService dnaService;
+	
 	DnaDTO dto;
+	DnaStatsDTO dnaStats;
+	
 	@BeforeEach
 	void contextLoads() {
 		dto = new DnaDTO();
@@ -60,5 +64,6 @@ class DnaServiceTests {
 		  });	
 	
 	}
+
 
 }

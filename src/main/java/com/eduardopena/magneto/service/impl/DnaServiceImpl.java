@@ -39,8 +39,7 @@ public class DnaServiceImpl implements DnaService {
 		return mutant;
 
 	}
-	int contadoVertical;
-	int contadorHorizontal;
+	
 	public boolean isMutant(String[] dna) {
 		int mutantCounter = 0;
 		int allowedLengh = dna.length - 4;
@@ -57,7 +56,6 @@ public class DnaServiceImpl implements DnaService {
 						j++;
 						if (dna[j].toCharArray()[i] == dna[j + 1].toCharArray()[i]) {
 							j++;
-							System.out.println("Encontre Mutante Vertical" +i + " " + j);
 							mutantCounter++;
 							if (mutantCounter > 1)return true;
 						} else {
@@ -83,7 +81,6 @@ public class DnaServiceImpl implements DnaService {
 						j++;
 						if (dna[i].toCharArray()[j] == dna[i].toCharArray()[j + 1]) {
 							j++;
-							System.out.println("Encontre Mutante Horizontal" +i + " " + j);
 							mutantCounter++;
 							if (mutantCounter > 1) return true;
 						} else {
@@ -108,7 +105,6 @@ public class DnaServiceImpl implements DnaService {
 								&& dna[i].toCharArray()[j] == dna[i + 3].toCharArray()[j + 3]) {
 							mutantCounter++;
 							if (mutantCounter > 1) return true;
-	
 						}
 					}
 					if (i >= 3) {
@@ -137,7 +133,6 @@ public class DnaServiceImpl implements DnaService {
 		} else {
 			return false;
 		}
-
 	}
 
 	@Override

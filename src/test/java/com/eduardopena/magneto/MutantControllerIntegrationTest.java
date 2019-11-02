@@ -1,5 +1,6 @@
 package com.eduardopena.magneto;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -62,5 +63,11 @@ public class MutantControllerIntegrationTest {
 		mvc.perform(
 				post("/mutant").content(objectmapper.writeValueAsString(dto)).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	public void testGetStats() throws Exception {
+		mvc.perform(get("/stats"))
+        .andExpect(status().isOk());
 	}
 }

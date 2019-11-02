@@ -28,7 +28,7 @@ public class MutantController {
 	}
 	
 	@GetMapping(value = "/stats")
-	public ResponseEntity<DnaStatsDTO> getStadistica(@RequestBody DnaDTO dna) {
+	public ResponseEntity<DnaStatsDTO> getStats() {
 			return new ResponseEntity<>(dnaService.getStats(),HttpStatus.OK);
 	}
 
