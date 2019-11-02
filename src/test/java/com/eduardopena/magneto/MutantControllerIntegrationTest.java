@@ -34,7 +34,7 @@ public class MutantControllerIntegrationTest {
 	}
 
 	@Test
-	public void testPostMutantDnaofMutant() throws Exception {
+	public void testPostMutantDnaOfMutant() throws Exception {
 		dto.setDna(new String[] { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" });
 		mvc.perform(
 				post("/mutant").content(objectmapper.writeValueAsString(dto)).contentType(MediaType.APPLICATION_JSON))
@@ -42,7 +42,7 @@ public class MutantControllerIntegrationTest {
 	}
 
 	@Test
-	public void testPostMutantDnaofHuman() throws Exception {
+	public void testPostMutantDnaOfHuman() throws Exception {
 		dto.setDna(new String[] { "ATGCGA", "CCGTAC", "TTATGT", "AGAAGG", "CCCATA", "TCACTG" });
 		mvc.perform(
 				post("/mutant").content(objectmapper.writeValueAsString(dto)).contentType(MediaType.APPLICATION_JSON))
@@ -50,7 +50,7 @@ public class MutantControllerIntegrationTest {
 	}
 
 	@Test
-	public void testPostMutantDnaIncorrectWords() throws Exception {
+	public void testPostMutantDnaWrongWords() throws Exception {
 		dto.setDna(new String[] { "ATGCGA", "CCVBGC", "TTATGT", "AGAAGG", "CCCATA", "TCACTG" });
 		mvc.perform(
 				post("/mutant").content(objectmapper.writeValueAsString(dto)).contentType(MediaType.APPLICATION_JSON))
@@ -58,7 +58,7 @@ public class MutantControllerIntegrationTest {
 	}
 
 	@Test
-	public void testPostMutantDnaIncocorrectArrayLengt() throws Exception {
+	public void testPostMutantDnaWrongArrayLenght() throws Exception {
 		dto.setDna(new String[] { "ATGCGA", "CCVBGC", "CCCATA", "TCACTG" });
 		mvc.perform(
 				post("/mutant").content(objectmapper.writeValueAsString(dto)).contentType(MediaType.APPLICATION_JSON))
@@ -69,5 +69,11 @@ public class MutantControllerIntegrationTest {
 	public void testGetStats() throws Exception {
 		mvc.perform(get("/stats"))
         .andExpect(status().isOk());
+	}
+	
+	@Test
+	public void testGetStatsWithPost() throws Exception {
+		mvc.perform(post("/stats"))
+        .andExpect(status().isMethodNotAllowed());
 	}
 }

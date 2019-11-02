@@ -35,19 +35,19 @@ public class DnaServiceImpl implements DnaService {
 		Dna dnaEntity = new Dna();
 		dnaEntity.setDna(Arrays.stream(dnaDTO.getDna()).collect(Collectors.joining(",")));
 		dnaEntity.setMutant(mutant);
-		dnaRepository.save(dnaEntity);
+		if(!dnaRepository.existDna(dnaEntity.getDna())) {
+			dnaRepository.save(dnaEntity);
+		}
 		return mutant;
-
 	}
 	
 	public boolean isMutant(String[] dna) {
 		int mutantCounter = 0;
-		int allowedLengh = dna.length - 4;
-		System.out.println(allowedLengh);
+		int allowedLenght = dna.length - 4;
 
 		for (int i = 0; i < dna.length; i++) {
 			for (int j = 0; j < dna.length; j++) {
-				if (j > allowedLengh) {
+				if (j > allowedLenght) {
 					break;
 				}
 				if (dna[j].toCharArray()[i] == dna[j + 1].toCharArray()[i]) {
@@ -72,7 +72,7 @@ public class DnaServiceImpl implements DnaService {
 		
 		for (int i = 0; i < dna.length; i++) {
 			for (int j = 0; j < dna.length; j++) {
-				if (j > allowedLengh) {
+				if (j > allowedLenght) {
 					break;
 				}
 				if (dna[i].toCharArray()[j] == dna[i].toCharArray()[j + 1]) {
@@ -98,8 +98,8 @@ public class DnaServiceImpl implements DnaService {
 
 		for (int i = 0; i < dna.length; i++) {
 			for (int j = 0; j < dna.length; j++) {
-				if (j <= allowedLengh) {
-					if (i <= allowedLengh) {
+				if (j <= allowedLenght) {
+					if (i <= allowedLenght) {
 						if (dna[i].toCharArray()[j] == dna[i + 1].toCharArray()[j + 1]
 								&& dna[i].toCharArray()[j] == dna[i + 2].toCharArray()[j + 2]
 								&& dna[i].toCharArray()[j] == dna[i + 3].toCharArray()[j + 3]) {

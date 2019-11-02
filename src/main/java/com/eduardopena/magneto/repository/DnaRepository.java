@@ -8,4 +8,6 @@ public interface DnaRepository {
 	public void save(Dna dna) ;
 	
 	public DnaStatsDTO getStats();
+	
+	public boolean existDna(String dna);
 }

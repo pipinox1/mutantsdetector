@@ -3,16 +3,13 @@ package com.eduardopena.magneto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.eduardopena.magneto.dto.DnaDTO;
 import com.eduardopena.magneto.dto.DnaStatsDTO;
-import com.eduardopena.magneto.entity.Dna;
 import com.eduardopena.magneto.repository.DnaRepository;
 import com.eduardopena.magneto.service.impl.DnaServiceImpl;
 
@@ -25,16 +22,7 @@ public class DnaServiceMockedTest {
 	@InjectMocks
 	private DnaServiceImpl dnaService;
 	
-	DnaDTO dto;
 	DnaStatsDTO dnaStats;
-	Dna dna;
-	
-	@BeforeEach
-	void contextLoads() {
-		dto = new DnaDTO();
-		
-	}
-
 
 	@Test
 	void testGetStatsMockedZeroValue() {

@@ -34,12 +34,12 @@ class DnaServiceIntegrationTests {
 	}
 	
 	@Test
-	void testIsMutantWithBadData() {
+	void testIsMutantWithWrongData() {
 		assertFalse(dnaService.isMutant(new String[]{"ATGCGA","CCGTGC","TTATGT","AGAAGG","CCCATA","TCACTG"}));
 	}
 	
 	@Test
-	void testIsMutantWithIncocorrectArrayLengt() {
+	void testIsMutantWithWrongArrayLenght() {
 		dto.setDna(new String[]{"ATGCGA","CCGTGC","TTATGT","AGAAGG"});
 		assertThrows(BadRequestException.class, () -> {
 			dnaService.save(dto);
@@ -48,7 +48,7 @@ class DnaServiceIntegrationTests {
 	}
 	
 	@Test
-	void testIsMutantWithIncocorrectWords() {
+	void testIsMutantWithWrongtWords() {
 		dto.setDna(new String[]{"ATGZZA","CCGTGC","TTATLT","AGAAGG","CCCATA","TCACTG"});
 		assertThrows(BadRequestException.class, () -> {
 			dnaService.save(dto);
