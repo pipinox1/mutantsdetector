@@ -61,9 +61,9 @@ Y listo! Nuestra aplicación fue deployada.
 
 ## Api
 
-La api brinda 2 endpoint que:
+La api brinda 2 endpoint que permiten:
 
-- Vericar si una cadena de adn corresponde a un mutante o a un humano
+- Vericar si una cadena de ADN corresponde a un mutante o a un humano
 Este metodo retorna un status 403 si el ADN corresponde a un humano y un 200 en caso de que sea mutante.
 
 POST 
