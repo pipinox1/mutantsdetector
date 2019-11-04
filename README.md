@@ -17,6 +17,7 @@ iguales​, de forma oblicua, horizontal o vertical
 ## Tecnologias aplicadas para el despligue:
 - [Docker](https://www.docker.com/)
 - [AWS - EC2](https://aws.amazon.com/es/ec2/)
+- [Fabric8](https://fabric8.io/)
 
 
 ## Setup y Deployment del proyecto
@@ -75,6 +76,7 @@ Body
 	"dna":["ATGAGA","CCGTGC","TCATGT","AGAAGG","CAACTA","TCACTG"]
 }
 ```
+Este body se encuentra validado y exige que las letras sean solo las permitidas, ademas que la matriz sera cuadra y que sea de una dimension mayor o igual a 4x4.
 
 
 - Estadisticas
@@ -85,7 +87,7 @@ GET
 localhost:8080/stats
 ```
 Response
-```
+```https://fabric8.io/
 {
     "ratio": 1.0,
     "count_mutant_dna": 2,
@@ -94,4 +96,28 @@ Response
 ```
 
 ## Implementacion en AWS
+
+POST 
+```
+http://ec2-3-87-162-226.compute-1.amazonaws.com:8080/mutant
+```
+
+GET 
+```
+http://ec2-3-87-162-226.compute-1.amazonaws.com:8080/stats
+```
+
+## Extras
+Para testear la performance de la Api se utilizo el siguiente comando para ejecutar en paralelo los script y simular concurrencia.
+
+```
+seq 100000 | parallel -n0 -j1000 "curl --write-out '%{http_code}\n'  -H 'Content-Type: application/json' \
+--data @body.json  \
+http://localhost:8080/mutant --silent"
+```
+Contenido del archivo body.json
+```
+{"dna":["ATGCGT","CAGAGC","TCATGT","AGATGG","CACATA","TCACTG"]}
+```
+
 
